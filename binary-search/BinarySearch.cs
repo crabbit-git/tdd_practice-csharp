@@ -3,15 +3,16 @@ using System;
 public static class BinarySearch
 {
     public static int Find(int[] array, int query)
-    // The thing is, there is already a built in method to do this:
-        // => Array.IndexOf(array, value);
-    // ... But I think writing one manually is meant to be the point of this,
-    // so I reckon I'll break out the C fundamentals:
-
     {
-        for (int i = 0; i < array.Length; i++) {
-            if (array[i] == query) return i;
-        }
-        return -1;
+        Array.Sort(array); // Test pass without it, but should be tested for
+        int bottomIndex = 0, midIndex, topIndex = array.Length - 1;
+        while (topIndex >= bottomIndex) {
+            midIndex = (bottomIndex + topIndex) / 2;
+            if (query > array[midIndex]) {
+                bottomIndex = midIndex + 1;
+            } else if (query < array[midIndex]) {
+                topIndex = midIndex - 1;
+            } else return midIndex;
+        } return -1;
     }
 }
