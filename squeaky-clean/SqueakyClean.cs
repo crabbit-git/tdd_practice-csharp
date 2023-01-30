@@ -22,7 +22,7 @@ public static class Identifier
                     break;
                 case char etruscanPurist when !Char.IsLetter(etruscanPurist):
                     break;
-                case char hellenophobia when Char.IsBetween(hellenophobia, 'α', 'ω'):
+                case char hellenophobia when hellenophobia is >= 'α' and <= 'ω':
                     break;
                 default:
                     formatted.Append(identifier[i]);
